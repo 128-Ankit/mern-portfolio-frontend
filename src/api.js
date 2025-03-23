@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Base URL for your backend
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://mern-portfolio-backend-1-2del.onrender.com';
+// const BASE_URL = 'http://localhost:5000';
 
 // Create axios instance
 const api = axios.create({
