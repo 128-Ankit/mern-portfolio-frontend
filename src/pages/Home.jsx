@@ -99,17 +99,17 @@ const Home = () => {
     };
 
     return (
-        <div className="min-h-screen relative flex flex-col lg:flex-row items-center justify-between overflow-hidden">
+        <div className="min-h-screen relative flex flex-col lg:flex-row items-center justify-evenly overflow-hidden px-4 sm:px-6 lg:px-8">
             {/* Add save button if user is admin */}
             {isAdmin && (
                 <div className="fixed top-2 right-2 md:top-4 md:right-4 z-50 flex items-center gap-2">
-                    <span className={`text-xs md:text-sm ${updateStatus.includes('Error') ? 'text-red-400' : 'text-green-400'}`}>
+                    <span className={`text-xs sm:text-sm ${updateStatus.includes('Error') ? 'text-red-400' : 'text-green-400'}`}>
                         {updateStatus}
                     </span>
                     <button
                         onClick={updateData}
                         disabled={isLoading}
-                        className="px-2 py-1 md:px-4 md:py-2 text-sm md:text-base bg-blue-500 hover:bg-blue-600 rounded-md text-white 
+                        className="px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-base bg-blue-500 hover:bg-blue-600 rounded-md text-white 
                                  disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                     >
                         {isLoading ? 'Saving...' : 'Save Changes'}
@@ -123,15 +123,15 @@ const Home = () => {
             </div>
 
             {/* Left Section */}
-            <div className="relative z-10 flex flex-col items-start gap-6 md:gap-10 w-full lg:w-auto max-w-2xl p-4 md:p-8 lg:p-16">
+            <div className="relative z-10 flex flex-col items-start gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2 p-4 sm:p-6 lg:p-16">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="space-y-4 md:space-y-6 w-full"
+                    className="space-y-3 sm:space-y-4 lg:space-y-6 w-full"
                 >
                     <div className="flex items-center">
-                        <h2 className="text-xl md:text-2xl font-medium text-blue-400/80">{title}</h2>
+                        <h2 className="text-lg sm:text-xl lg:text-2xl font-medium text-blue-400/80">{title}</h2>
                         <AdminButton
                             onEdit={() => {
                                 const newTitle = prompt("Enter new title:", title);
@@ -141,8 +141,8 @@ const Home = () => {
                         />
                     </div>
 
-                    <div className="flex items-start md:items-center flex-wrap">
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
+                    <div className="flex items-start sm:items-center flex-wrap">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
                             {heading}{" "}
                             <span className="bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
                                 {name}
@@ -163,7 +163,7 @@ const Home = () => {
                     </div>
 
                     <div className="flex items-start">
-                        <p className="text-base md:text-xl text-gray-400 leading-relaxed max-w-xl">
+                        <p className="text-sm sm:text-base lg:text-xl text-gray-400 leading-relaxed max-w-xl">
                             {description}
                         </p>
                         <AdminButton
@@ -177,22 +177,22 @@ const Home = () => {
                 </motion.div>
 
                 <motion.div
-                    className="flex flex-wrap gap-4 md:gap-6 items-center"
+                    className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 items-center"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
                     <a href="#portfolio"
                         className="group bg-gradient-to-r from-blue-500 to-purple-500 p-[1px] rounded-full">
-                        <div className="px-4 md:px-8 py-2 md:py-4 rounded-full bg-gray-900/50 hover:bg-transparent 
-                                    transition-all duration-300 backdrop-blur-xl flex items-center gap-3 text-sm md:text-base">
+                        <div className="px-3 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 rounded-full bg-gray-900/50 hover:bg-transparent 
+                                    transition-all duration-300 backdrop-blur-xl flex items-center gap-2 text-xs sm:text-sm lg:text-base">
                             <span>View My Work</span>
                             <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
                         </div>
                     </a>
 
                     {/* Social links section */}
-                    <div className="flex gap-3 md:gap-4">
+                    <div className="flex gap-2 sm:gap-3 lg:gap-4">
                         {[
                             { icon: FaGithub, url: socialUrls.github, platform: 'github' },
                             { icon: FaLinkedin, url: socialUrls.linkedin, platform: 'linkedin' }
@@ -203,8 +203,8 @@ const Home = () => {
                                     href={social.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-3 md:p-4 rounded-full bg-gray-900/50 hover:bg-gray-800/50 
-                                             backdrop-blur-xl border border-gray-700/30 text-xl md:text-2xl
+                                    className="p-2 sm:p-3 lg:p-4 rounded-full bg-gray-900/50 hover:bg-gray-800/50 
+                                             backdrop-blur-xl border border-gray-700/30 text-lg sm:text-xl lg:text-2xl
                                              text-gray-400 hover:text-blue-400 transition-colors duration-300"
                                 >
                                     <social.icon />
@@ -226,13 +226,13 @@ const Home = () => {
             </div>
 
             {/* Right Section - 3D Torus Knot */}
-            <div className="relative w-full h-[300px] md:h-[400px] lg:h-[600px] lg:w-1/2">
+            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[600px] lg:w-1/2">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-3xl" />
                 <Canvas>
                     <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
                     <ambientLight intensity={0.2} />
                     <MovingLight />
-                    <TorusKnot args={[1, 0.4, 256, 64]} scale={1.6}>
+                    <TorusKnot args={[1, 0.4, 256, 64]} scale={1.5}>
                         <MeshDistortMaterial
                             color="#4D79FF"
                             attach="material"
