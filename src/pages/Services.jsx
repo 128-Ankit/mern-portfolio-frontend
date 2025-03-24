@@ -72,7 +72,7 @@ const Services = () => {
     }, []);
 
     return (
-        <div className="min-h-screen relative bg-[#030014] text-white py-20 px-4 overflow-hidden">
+        <div className="min-h-screen relative bg-[#030014] text-white py-12 sm:py-20 px-4 overflow-hidden">
             <div className="absolute inset-0">
                 {stars.map((star, i) => (
                     <div
@@ -92,10 +92,10 @@ const Services = () => {
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-20"
+                    className="text-center mb-12 sm:mb-20"
                 >
                     <motion.h1
-                        className="text-7xl font-bold mb-6 relative inline-block"
+                        className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 relative inline-block"
                         animate={{ 
                             textShadow: [
                                 "0 0 20px rgba(124,58,237,0.5)",
@@ -110,17 +110,17 @@ const Services = () => {
                     >
                         Services
                     </motion.h1>
-                    <p className="text-purple-300/80 text-lg max-w-2xl mx-auto">
+                    <p className="text-purple-300/80 text-base sm:text-lg max-w-2xl mx-auto px-4">
                         Transforming ideas into digital reality with cutting-edge solutions
                     </p>
                 </motion.div>
 
-                <div className="flex justify-center gap-4 mb-12">
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-2">
                     {categories.map((category) => (
                         <motion.button
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
-                            className={`px-6 py-2 rounded-full border ${
+                            className={`px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base rounded-full border ${
                                 activeCategory === category.id 
                                     ? 'border-purple-500 bg-purple-500/20' 
                                     : 'border-white/10'
@@ -140,7 +140,7 @@ const Services = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-2 sm:px-4"
                     >
                         {filteredServices.map((service, index) => (
                             <motion.div

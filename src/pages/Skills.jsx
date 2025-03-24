@@ -33,7 +33,7 @@ const Skills = () => {
     };
 
     return (
-        <div className="min-h-screen relative bg-black text-white p-8">
+        <div className="min-h-screen relative bg-black text-white p-4 sm:p-6 md:p-8">
             {/* Background gradients */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-black to-purple-900/20" />
@@ -44,19 +44,19 @@ const Skills = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text"
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 md:mb-16 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text"
                 >
                     Technical Skills
                 </motion.h1>
 
-                <div className="flex justify-center gap-4 mb-12">
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 md:mb-12">
                     {['all', 'languages', 'frontend', 'backend', 'tools'].map((category) => (
                         <motion.button
                             key={category}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setActiveCategory(category)}
-                            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors
+                            className={`px-3 py-1.5 sm:px-6 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors
                                 ${activeCategory === category
                                     ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
                                     : 'bg-gray-800/50 text-gray-400 hover:text-white'}`}
@@ -73,13 +73,15 @@ const Skills = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 place-items-center"
+                        className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 md:gap-12 place-items-center"
                     >
                         {Object.entries(skillCategories)
                             .filter(([category]) => activeCategory === 'all' || category === activeCategory)
                             .flatMap(([_, skills]) => skills)
                             .map((skill, index) => (
-                                <SkillSphere key={index} {...skill} />
+                                <div key={index} className="w-full max-w-[150px] sm:max-w-[300px] lg:max-w-none">
+                                    <SkillSphere {...skill} />
+                                </div>
                             ))}
                     </motion.div>
                 </AnimatePresence>

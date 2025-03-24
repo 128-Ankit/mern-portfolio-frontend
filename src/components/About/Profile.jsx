@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import { getAbout, updateAbout } from '../../api';
 import { FaEdit } from 'react-icons/fa';
+import Spinner from '../common/Spinner';
 
 const Profile = () => {
     const [token] = useState(localStorage.getItem('authToken'));
@@ -32,7 +33,6 @@ const Profile = () => {
         fetchAbout();
     }, []);
     
-    if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
     if (!about || !about[0]) return <div>No data available</div>;
     

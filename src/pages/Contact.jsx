@@ -31,7 +31,7 @@ const Contact = () => {
     ];
 
     return (
-        <div className="min-h-screen relative bg-[#030014] text-white py-20 px-4 overflow-hidden">
+        <div className="min-h-screen relative bg-[#030014] text-white py-10 sm:py-20 px-4 overflow-hidden">
             <div className="absolute inset-0">
                 {[...Array(50)].map((_, i) => (
                     <div key={i}
@@ -50,10 +50,10 @@ const Contact = () => {
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-20"
+                    className="text-center mb-10 sm:mb-20"
                 >
                     <motion.h1
-                        className="text-7xl font-bold mb-6 relative inline-block"
+                        className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 relative inline-block"
                         animate={{ 
                             textShadow: [
                                 "0 0 20px rgba(124,58,237,0.5)",
@@ -68,19 +68,19 @@ const Contact = () => {
                     >
                         Get in Touch
                     </motion.h1>
-                    <p className="text-purple-300/80 text-lg max-w-2xl mx-auto">
+                    <p className="text-purple-300/80 text-base sm:text-lg max-w-2xl mx-auto px-4">
                         Let's discuss your project and bring your ideas to life
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="space-y-6"
+                        className="space-y-4 sm:space-y-6"
                     >
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                             <div>
                                 <input
                                     type="text"
@@ -88,7 +88,7 @@ const Contact = () => {
                                     placeholder="Your Name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full p-4 rounded-lg bg-white/5 border border-white/10 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                                    className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-white/10 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                                 />
                             </div>
                             <div>
@@ -98,7 +98,7 @@ const Contact = () => {
                                     placeholder="Your Email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full p-4 rounded-lg bg-white/5 border border-white/10 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                                    className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-white/10 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                                 />
                             </div>
                             <div>
@@ -107,13 +107,13 @@ const Contact = () => {
                                     placeholder="Your Message"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    rows="6"
-                                    className="w-full p-4 rounded-lg bg-white/5 border border-white/10 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                                    rows="5"
+                                    className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-white/10 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                                 />
                             </div>
                             <button
                                 type="submit"
-                                className="w-full py-4 px-6 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                                className="w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                             >
                                 Send Message
                             </button>
@@ -124,24 +124,26 @@ const Contact = () => {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="space-y-6"
+                        className="space-y-4 sm:space-y-6"
                     >
-                        <ContactInfo icon={FaEnvelope} title="Email" content="connectwithankit2@gmail.com" />
-                        <ContactInfo icon={FaPhone} title="Phone" content="+91 7388480128" />
-                        <ContactInfo icon={FaMapMarkerAlt} title="Location" content="Bhadohi, India" />
+                        <div className="grid gap-4 sm:gap-6">
+                            <ContactInfo icon={FaEnvelope} title="Email" content="connectwithankit2@gmail.com" />
+                            <ContactInfo icon={FaPhone} title="Phone" content="+91 7388480128" />
+                            <ContactInfo icon={FaMapMarkerAlt} title="Location" content="Bhadohi, India" />
+                        </div>
                         
-                        <div className="pt-6">
-                            <h3 className="text-xl font-semibold mb-4">Follow Me</h3>
-                            <div className="flex space-x-4">
+                        <div className="pt-4 sm:pt-6">
+                            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Follow Me</h3>
+                            <div className="flex space-x-3 sm:space-x-4">
                                 {socialLinks.map((social, index) => (
                                     <Link
                                         key={index}
                                         to={social.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300"
+                                        className="p-2 sm:p-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300"
                                     >
-                                        <social.icon className="text-xl text-purple-400" />
+                                        <social.icon className="text-lg sm:text-xl text-purple-400" />
                                     </Link>
                                 ))}
                             </div>

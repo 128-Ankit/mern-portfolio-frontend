@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, TorusKnot, MeshDistortMaterial } from "@react-three/drei";
-import { FaGithub, FaLinkedin, FaArrowRight, FaEdit, FaTrash, FaPlus } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaArrowRight, FaEdit, FaTrash } from "react-icons/fa";
 
 import MovingLight from "../components/Home/MovingLight";
 import HorizontalNav from "../components/Home/HorizontalNav";
@@ -11,7 +11,7 @@ import { getHomeData, updateHomeData } from '../api.js';
 
 const Home = () => {
     const [isAdmin, setIsAdmin] = useState(false);
-    const [title, setTitle] = useState("tital");
+    const [title, setTitle] = useState("Welcome to my portfolio");
     const [heading, setHeading] = useState("Hello, I'm");
     const [name, setName] = useState("Ankit Pathak");
     const [description, setDescription] = useState("A Full Stack Developer crafting stunning, high-performance web applications with the latest technologies.");

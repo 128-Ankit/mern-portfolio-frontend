@@ -66,20 +66,20 @@ const Skills = () => {
     };
 
     return (
-        <>
+        <div className="w-full container mx-auto px-4 sm:px-6 lg:px-8">
             {token && (
-                <div className="mb-4 flex justify-end">
+                <div className="mb-4 flex justify-end px-2 sm:px-0">
                     {editMode ? (
                         <button
                             onClick={handleSave}
-                            className="bg-green-500 text-white px-4 py-2 rounded-md"
+                            className="bg-green-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base rounded-md transition-all hover:bg-green-600"
                         >
                             Save Changes
                         </button>
                     ) : (
                         <button
                             onClick={() => setEditMode(true)}
-                            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                            className="bg-blue-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base rounded-md transition-all hover:bg-blue-600"
                         >
                             Edit Skills
                         </button>
@@ -94,21 +94,25 @@ const Skills = () => {
                     staggerChildren: 0.1,
                     delayChildren: 0.3
                 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16"
             >
                 {editedSkills.map((skill, index) => (
-                    <SkillCard 
+                    <div 
                         key={index} 
-                        icon={skill.icon}
-                        title={skill.title}
-                        description={skill.description}
-                        color={skill.color}
-                        editable={editMode}
-                        onEdit={(newDescription) => handleEdit(index, newDescription)}
-                    />
+                        className="w-full transform transition-transform hover:scale-[1.02]"
+                    >
+                        <SkillCard 
+                            icon={skill.icon}
+                            title={skill.title}
+                            description={skill.description}
+                            color={skill.color}
+                            editable={editMode}
+                            onEdit={(newDescription) => handleEdit(index, newDescription)}
+                        />
+                    </div>
                 ))}
             </motion.div>
-        </>
+        </div>
     )
 }
 

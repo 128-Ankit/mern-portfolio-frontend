@@ -6,6 +6,7 @@ import Skills from '../components/About/Skills';
 import Experience from '../components/About/Experience';
 import Education from '../components/About/Education';
 
+
 const About = () => {
 
     return (

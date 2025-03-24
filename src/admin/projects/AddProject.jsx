@@ -3,6 +3,7 @@ import { addProjects } from "../../api.js";
 import { InputField, Textarea, Select } from './Common.jsx';
 
 const AddProject = () => {
+    const [loading, setLoading] = useState(false);
     const [projectData, setProjectData] = useState({
         title: '',
         description: '',
@@ -34,10 +35,13 @@ const AddProject = () => {
         })
 
         try {
+            setLoading(true);
             await addProjects(formattedData, formData);
+            setLoading(false);
         } catch (error) {
             console.error('Error adding project:', error);
             alert('Failed to add project');
+            setLoading(false);
         }
     };
 
@@ -66,7 +70,7 @@ const AddProject = () => {
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                   
+
                     <InputField
                         Title={"Title"}
                         type={"text"}
@@ -130,7 +134,7 @@ const AddProject = () => {
                         type="submit"
                         className="w-full py-2 px-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded hover:opacity-90 transition-opacity"
                     >
-                        Add Project
+                        {loading ? "Adding.." : "Add Project"}
                     </button>
                 </form>
             </div>
