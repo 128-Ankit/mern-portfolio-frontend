@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // Base URL for your backend
-const BASE_URL = 'https://mern-portfolio-backend-1-2del.onrender.com';
-// const BASE_URL = 'http://localhost:5000';
+// const BASE_URL = 'https://mern-portfolio-backend-1-2del.onrender.com';
+const BASE_URL = 'http://localhost:5000';
 
 // Create axios instance
 const api = axios.create({
@@ -16,9 +16,10 @@ const getAuthToken = () => localStorage.getItem('authToken');
 const endpoints = {
     register: '/admin/register',
     login: '/admin/login',
-    home: '/home', 
+    home: '/home',
     about: '/about',
-    experience: '/experience'
+    experience: '/experience',
+    projects: '/projects'
 };
 
 // Headers with auth token
@@ -74,7 +75,7 @@ export const updateHomeData = async (data) => {
         const response = await api.put(`${endpoints.home}/${id}`, data, {
             headers: getHeaders()
         });
-        if(response.ok){
+        if (response.ok) {
             alert('Home data updated successfully');
         }
         return response.data;
@@ -102,7 +103,7 @@ export const updateAbout = async (data) => {
         const response = await api.put(`${endpoints.about}/${id}`, data, {
             headers: getHeaders()
         });
-        if(response.ok){
+        if (response.ok) {
             alert('About data updated successfully');
         }
         return response.data;
@@ -130,7 +131,7 @@ export const updateExperience = async (data) => {
         const response = await api.put(`${endpoints.about}/${id}`, data, {
             headers: getHeaders()
         });
-        if(response.ok){
+        if (response.ok) {
             alert('About data updated successfully');
         }
         return response.data;
@@ -147,12 +148,73 @@ export const deleteExperience = async (data) => {
         const response = await api.delete(`${endpoints.about}/${id}`, data, {
             headers: getHeaders()
         });
-        if(response.ok){
+        if (response.ok) {
             alert('About data updated successfully');
         }
         return response.data;
     } catch (error) {
-        console.error('Error updating about data:', error);
+        console.error('Error deleting about data:', error);
+        throw error;
+    }
+};
+
+//getExperience
+export const getProjects = async () => {
+    try {
+        const response = await api.get(endpoints.projects);
+        return response.data;
+    } catch (error) {
+        console.error('Error getting projects data:', error);
+        throw error;
+    }
+};
+
+// addExperience
+export const addProjects = async (data, formData) => {
+    try {
+        const response = await api.post(`${endpoints.projects}`, data, {
+            headers: getHeaders()
+        });
+        if (response.ok) {
+            alert('Projects added successfully');
+            formData;
+        }
+        return response.data;
+    } catch (error) {
+        console.error('Error adding new projects:', error);
+        throw error;
+    }
+};
+
+// updateExperience
+export const updateProjects = async (id, data) => {
+    try {
+        const response = await api.put(`${endpoints.projects}/${id}`, data, {
+            headers: getHeaders()
+        });
+        if (response.ok) {
+            alert('projects data updated successfully');
+        }
+        return response.data;
+    } catch (error) {
+        console.error('Error updating projects data:', error);
+        throw error;
+    }
+};
+
+// deleteExperience
+export const deleteProjects = async (id) => {
+
+    try {
+        const response = await api.delete(`${endpoints.projects}/${id}`, {
+            headers: getHeaders()
+        });
+        if (response.ok) {
+            alert('projects data deleted successfully');
+        }
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting projects data:', error);
         throw error;
     }
 };
